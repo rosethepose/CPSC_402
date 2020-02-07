@@ -12,20 +12,18 @@ Assignment1::Assignment1(string file)
 void Assignment1::question1()
 {
 	int state = 0;
-	int size = 10;
-	if(input.length() > 0)
-	{
-		size = input.length();
-	}
-	int indices[20] = {};
 	char letter = ' ';
-	int index = 0;
+	bool match = false;
+	cout << "Question 1:";
 	for(int i = 0; i < input.length(); ++i)
 	{
 		letter = input.at(i);
-		if(state == 0 && letter == 'a')
+		if(state == 0)
 		{
-			state = 1;
+			if(letter == 'a')
+			{
+				state = 1;
+			}
 		}
 		else if(state == 1)
 		{
@@ -54,8 +52,8 @@ void Assignment1::question1()
 			if(letter == 'b')
 			{
 				state = 4;
-				indices[index] = i + 1;
-				index++;
+				cout << " " << i + 1;
+				match = true;
 			}
 			else if(letter == 'a')
 			{
@@ -78,10 +76,9 @@ void Assignment1::question1()
 			}
 		}
 	}
-	cout << "Question 1:";
-	for(int i = 0; i < 20; i++)
+	if(!match)
 	{
-		cout << " " << indices[i];
+		cout << " No Matches";
 	}
 	cout << endl;
 }
