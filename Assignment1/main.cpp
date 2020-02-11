@@ -6,12 +6,14 @@
 using namespace std;
 
 int main() {
-    string filename = "";
-		cout << "Please enter file name: ";
-		cin >> filename;
-
+    string filename = "input.txt";
 		ifstream inputFile;
 		inputFile.open(filename, ios::in);
+		if (!inputFile.is_open()) {
+			cout << "Please enter file name: ";
+			cin >> filename;
+			inputFile.open(filename, ios::in);
+    }
     while (!inputFile.is_open()) {
 			cout << "File not found, please enter a valid file name: ";
 			cin >> filename;
