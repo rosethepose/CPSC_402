@@ -23,6 +23,5 @@ int main() {
 		a1.question2();
 		a1.question3();
 
-    inputFile.close();
-    return EXIT_SUCCESS;
+    return 0;
 }
