@@ -1,20 +1,23 @@
 #include <iostream>
+#include <fstream>
 
 #include "Assignment1.h"
 
 using namespace std;
 
-Assignment1::Assignment1(string file){
-	input = file;
+Assignment1::Assignment1(string filename){
+	file = filename;
 }
 
 void Assignment1::question1(){
+	ifstream inputFile;
+	inputFile.open(file, ios::in);
 	int state = 0;
+	int index = 1;
 	char letter = ' ';
 	bool match = false;
 	cout << "Question 1:";
-	for(int i = 0; i < input.length(); ++i){
-		letter = input.at(i);
+	while ((letter = inputFile.get()) != EOF){
 		if(state == 0){
 			if(letter == 'a'){
 				state = 1;
@@ -39,7 +42,7 @@ void Assignment1::question1(){
 		else if(state == 3){
 			if(letter == 'b'){
 				state = 4;
-				cout << " " << i + 1;
+				cout << " " << index;
 				match = true;
 			}
 			else if(letter == 'a'){
@@ -57,20 +60,24 @@ void Assignment1::question1(){
 				state = 0;
 			}
 		}
+		index++;
 	}
 	if(!match){
 		cout << " No Matches";
 	}
 	cout << endl;
+	inputFile.close();
 }
 
 void Assignment1::question2(){
+	ifstream inputFile;
+	inputFile.open(file, ios::in);
 	int state = 0;
+	int index = 1;
 	char letter = ' ';
 	bool match = false;
 	cout << "Question 2:";
-	for(int i = 0; i < input.length(); ++i){
-		letter = input.at(i);
+	while ((letter = inputFile.get()) != EOF){
 		if(state == 0){
 			if(letter == 'a'){
 				state = 1;
@@ -113,7 +120,7 @@ void Assignment1::question2(){
 		{
 			if(letter == 'a'){
 				state = 6;
-				cout << " " << i + 1;
+				cout << " " << index;
 				match = true;
 			}
 			else if(letter == 'c'){
@@ -131,29 +138,33 @@ void Assignment1::question2(){
 				state = 3;
 			}
 		}
+		index++;
 	}
 	if(!match){
 		cout << " No Matches";
 	}
 	cout << endl;
+	inputFile.close();
 }
 
 void Assignment1::question3(){
+	ifstream inputFile;
+	inputFile.open(file, ios::in);
 	int state = 0;
+	int index = 1;
 	char letter = ' ';
 	bool match = false;
 	cout << "Question 3:";
-	for(int i = 0; i < input.length(); ++i){
-		letter = input.at(i);
+	while ((letter = inputFile.get()) != EOF){
 		if(state == 0){
 			if(letter == 'a'){
 				state = 1;
 			}
 		}
-		else if(state == 1){ //a
+		else if(state == 1){
 			if(letter == 'a'){
 				state = 2;
-				cout << " " << i + 1;
+				cout << " " << index;
 				match = true;
 			}
 			else if(letter == 'b'){
@@ -165,7 +176,7 @@ void Assignment1::question3(){
 		}
 		else if(state == 2){
 			if(letter == 'a'){
-				cout << " " << i + 1;
+				cout << " " << index;
 				match = true;
 			}
 			else if(letter == 'b'){
@@ -178,7 +189,7 @@ void Assignment1::question3(){
 		else if(state == 3){
 			if(letter == 'b'){
 				state = 4;
-				cout << " " << i + 1;
+				cout << " " << index;
 				match = true;
 			}
 			else if(letter == 'a'){
@@ -196,9 +207,11 @@ void Assignment1::question3(){
 				letter = 0;
 			}
 		}
+		index++;
 	}
 	if(!match){
 		cout << " No Matches";
 	}
 	cout << endl;
+	inputFile.close();
 }
